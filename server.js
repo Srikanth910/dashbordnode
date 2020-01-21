@@ -34,5 +34,5 @@ const db=require('./config/keys').mongoURI
  app.use('/api/users',users)
  app.use('/api/post',post)
  app.use('/api/profile',profile)
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send('back end runnig!'))
 app.listen(port, () => console.log(`server stated ${port}`))
