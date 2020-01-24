@@ -152,6 +152,7 @@ router.post('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
 // add exprence to profile
 
  router.post('/experience', passport.authenticate('jwt',{session:false}),(req,res)=>{
+       console.log('node res', req.body)
       const {errors, isValid}=validateExperienceInput(req.body);
       if(!isValid){
           return res.status(400).json(errors)
@@ -169,9 +170,15 @@ router.post('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
                  description:req.body.description,
 
              }
+              console.log('data', newExp)
 // add new array 
              profile.experience.unshift(newExp);
-             profile.save().then(profile=>res.json(profile))
+             profile.save().then(profile=>{
+                return res.status(200).json(profile)
+                
+                 
+             })
+                
          }
      })
  })

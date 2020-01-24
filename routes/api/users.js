@@ -10,11 +10,10 @@ const validateRegisterInput=require('../../validation/register')
 const validateLoginInput=require('../../validation/login')
 
  const bcrypt=require('bcryptjs')
-router.get('/',(req,res)=>{
-    res.send('get user')
-})
+
 
 router.post('/register', (req, res) => {
+   console.log('body', req.body)
     const { errors, isValid } = validateRegisterInput(req.body);
   
     // Check Validation
